@@ -3,7 +3,7 @@ const fs = require("fs");
 module.exports = {
   writes: function (link) {
     let mylink = link + "\n";
-    fs.appendFile("scraped_link.txt", mylink, (err) => {
+    fs.appendFile("Result/scraped_link.txt", mylink, (err) => {
       if (err) {
         console.error(err);
       }
@@ -12,7 +12,7 @@ module.exports = {
   },
   scWrite: function (link) {
     let mylink = link + "\n";
-    fs.appendFile("scs_log.txt", mylink, (err) => {
+    fs.appendFile("Result/scs_log.txt", mylink, (err) => {
       if (err) {
         console.error(err);
       }

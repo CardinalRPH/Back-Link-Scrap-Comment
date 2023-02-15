@@ -3,8 +3,6 @@
 
 const writing = require("./writer");
 let { PythonShell } = require('python-shell');
-let my_q = "semut";
-let search_q = "site:blogspot.com " + "'" + my_q + "'";
 const { Builder, By, Key, util } = require("selenium-webdriver");
 
 let driver = new Builder().forBrowser("MicrosoftEdge").build();
@@ -12,12 +10,22 @@ let skip1 = "webcache.googleusercontent.com";
 let skip2 = "translate.google.com";
 let skip3 = "www.google.com";
 
-// while (true) {
+const options = {
+  mode: "text",
+  pythonPath: "C:\\Users\\rayha\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", //instalation python path
+  pythonOptions: ["-u"],
+  scriptPath: "F:\\Perkuliahan\\Code By me\\PythonSH",  //python script path
+  
+};
 
-// }
+process.on('message', (msg) => {
+  if (msg.qkey) {
+    start(msg.qkey);
+  }
+});
 
-start();
-async function start() {
+async function start(my_q) {
+  let search_q = "site:blogspot.com " + "'" + my_q + "'";
   try {
     await driver.get("http://google.com");
     await driver.findElement(By.name("q")).sendKeys(search_q, Key.RETURN);
@@ -53,14 +61,18 @@ async function start() {
         } catch (error) {
           //when the scrapping done. driver will close
           console.log("Udeh Stop");
-          
-          // require("child_process").fork("processing.js");
-          await driver.close();
 
-          // PythonShell.run("processing.py", null, function (err, result) {
-          //   console.log(result)
+
+          await driver.close();
+          require("child_process").fork("processing.py");
+
+          // PythonShell.run("processing.py", options, function (err, result) {
+          //   if (err) {
+          //     throw err;
+          //   }
+          //   console.log("results: ", result);
           //   console.log("Program FInished");
-          // }) 
+          // });
           // console.log(error);
           break;
         }
@@ -69,4 +81,5 @@ async function start() {
   } catch (error) {
     console.log(error);
   }
+  await process.exit();
 }
