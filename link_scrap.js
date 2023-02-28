@@ -3,6 +3,7 @@
 
 const writing = require("./writer");
 let { PythonShell } = require('python-shell');
+const prompt = require("prompt-sync")({ sigint: true });
 const { Builder, By, Key, util } = require("selenium-webdriver");
 
 let driver = new Builder().forBrowser("MicrosoftEdge").build();
@@ -10,19 +11,9 @@ let skip1 = "webcache.googleusercontent.com";
 let skip2 = "translate.google.com";
 let skip3 = "www.google.com";
 
-const options = {
-  mode: "text",
-  pythonPath: "C:\\Users\\rayha\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", //instalation python path
-  pythonOptions: ["-u"],
-  scriptPath: "F:\\Perkuliahan\\Code By me\\PythonSH",  //python script path
-  
-};
 
-process.on('message', (msg) => {
-  if (msg.qkey) {
-    start(msg.qkey);
-  }
-});
+let qkey = prompt("Keyword: ");
+start(qkey);
 
 async function start(my_q) {
   let search_q = "site:blogspot.com " + "'" + my_q + "'";
@@ -64,16 +55,8 @@ async function start(my_q) {
 
 
           await driver.close();
-          require("child_process").fork("processing.py");
-
-          // PythonShell.run("processing.py", options, function (err, result) {
-          //   if (err) {
-          //     throw err;
-          //   }
-          //   console.log("results: ", result);
-          //   console.log("Program FInished");
-          // });
-          // console.log(error);
+          // require("child_process").fork("PythonSH/processing.py");
+          pythonrun(error);
           break;
         }
       }
@@ -81,5 +64,18 @@ async function start(my_q) {
   } catch (error) {
     console.log(error);
   }
-  await process.exit();
+}
+
+function pythonrun(error) {
+
+  const options = {
+    mode: "text",
+  };
+  const pyshell = new PythonShell("PythonSH/processing.py", options);
+  let Result;
+  pyshell.on("message", function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    Result = message;
+    console.log(Result);
+  });
 }
