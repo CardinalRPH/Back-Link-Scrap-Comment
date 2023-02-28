@@ -6,7 +6,7 @@ let { PythonShell } = require('python-shell');
 const prompt = require("prompt-sync")({ sigint: true });
 const { Builder, By, Key, util } = require("selenium-webdriver");
 
-let driver = new Builder().forBrowser("MicrosoftEdge").build();
+let driver = new Builder().forBrowser("chrome").build();
 let skip1 = "webcache.googleusercontent.com";
 let skip2 = "translate.google.com";
 let skip3 = "www.google.com";
