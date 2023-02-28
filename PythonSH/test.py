@@ -1,16 +1,32 @@
-string = "http://bulletxinbijak.blogspot.com/2020/03/tugas-daring-bahasa-iggris.html"
-def gg():
-   bol=False
-   with open(r'Result/error_web.txt', 'r') as fp:
-      lines = fp.readlines()
-      for row in lines:
-         if row.strip() in string:
-            bol=True
-            break
-   if bol==True:
-      print("yay")
-   else:
-      print("nahh")
-            
-            
-gg()
+
+class setget:
+   def __init__(self, age=20):
+         self._age = age
+
+    # getter method
+   def get_age(self):
+        return self._age
+      
+    # setter method
+   def set_age(self, x):
+        self._age = x
+        
+sg = setget()
+
+
+def hehe():
+   print("yolo")
+   haha()
+   
+def haha():
+   print("yala")
+
+hehe()
+def function():
+   sg.set_age(21)
+   return sg.get_age()
+
+        
+if __name__ == '__main__':
+    var = function()
+    print(var)

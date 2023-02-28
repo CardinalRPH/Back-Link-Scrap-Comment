@@ -7,8 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 
-username = 'example@gmail.com' #your email google
-password = 'example' #your password google
+username = '' #your email google
+password = '' #your password google
 
 primary_comment = 'Good, Thanks for Your Information'
 
