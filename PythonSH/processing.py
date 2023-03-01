@@ -52,21 +52,21 @@ def comment():
                                     By.XPATH, '//*[@id="FeaturedPost1"]/div/div/article/div[5]/div[1]/div[1]/span/a/span')
                                 buttonftr.click()
                             except NoSuchElementException:
-                                print("No FTR btn")
+                                print("No Comment btn 1")
                                 sys.stdout.flush()
                             try:
                                 buttonftr2 = driver.find_element(
                                     By.XPATH, '//*[@id="FeaturedPost1"]/div/div/article/div[4]/div[1]/div[1]/span/a/span')
                                 buttonftr2.click()
                             except NoSuchElementException:
-                                print("No FTR btn")
+                                print("No Comment btn 2")
                                 sys.stdout.flush()
                             try:
                                 buttonftr3 = driver.find_element(
                                     By.XPATH, '//*[@id="Blog1"]/div[1]/div/div/div[1]/div/div[3]/div[1]/span[3]/a')
                                 buttonftr3.click()
                             except NoSuchElementException:
-                                print("No FTR btn")
+                                print("No Comment btn 3")
                                 sys.stdout.flush()
 
                             frame = driver.find_element(
@@ -97,7 +97,7 @@ def comment():
                             sleep(2)
 
                         except NoSuchElementException:
-                            print("No El")
+                            print("No Element Need")
                             sys.stdout.flush()
                             continue
                     except TimeoutException:
@@ -110,7 +110,7 @@ def comment():
                                 f.write(website +"\n")
                         continue
                     finally:
-                        print("Timeout Exception: Page did not loadxx.")
+                        print("Timeout Exception: Page did not load.")
                         sys.stdout.flush()
                         continue
             
