@@ -1,20 +1,39 @@
 # Back-Link-Scrap-Comment
-only for blogspot.com
+## Only for blogspot.com
 ### Use Google Chrome
-###  make sure have node js and python
-in this project you can choose 2 browser only for scrapping 
-<li>Google Chrome</li>
-<li> Microsoft Edge</li>
+###  Make sure have Node Js and Python
+### With Selenium Node Js and Python
 
-change line in code below 
-```let driver = new Builder().forBrowser("chrome").build();```
+# How To Use
 
-change "chrome" with the browser that you choosen
+Place your google email and password in "PythonSH\processing.py"
+<br>
+the code is (in line 11-12)
+```
+username = '' #your email google 
+password = '' #your password google
+```
 
-##Install This for run comment
-```pip install undetected-chromedriver```
 
-to start code
+## To start program
+
+Run this command in terminal
+
 ```npm start```
-then write the "keyword" you want
+<br>
+Start program (Scraping and Give Comment)
+<br> <br>
+```npm run link-cm```
+<br>
+Start program (Give Comment Only)
+<br><br>
+```npm run link-sc```
+<br>
+Start program (Scraping Only)
+
+## Scrapping
+While running Scraping, you need to fill in "keyword" in the command line.
+<br><br>
+the "keyword" is what you want to search in the google.
+
 
