@@ -12,6 +12,7 @@ let skip3 = "www.google.com";
 
 
 let qkey = prompt("Keyword: ");
+let page = 1;
 start(qkey);
 
 async function start(my_q) {
@@ -20,11 +21,13 @@ async function start(my_q) {
     await driver.get("http://google.com");
     await driver.findElement(By.name("q")).sendKeys(search_q, Key.RETURN);
 
+    console.log("Wait 20 Second for Capthca");
+
     //timeout 20s for captcha
     setTimeout(async function () {
       while (true) {
         try {
-          console.log("Next Page");
+          console.log("Page " + page);
           let linkElements = await driver.findElements(
             By.xpath("//div[@class='yuRUbf']//a[@href]")
           );
@@ -48,6 +51,7 @@ async function start(my_q) {
               By.xpath("//*[@id='botstuff']/div/div[2]/table/tbody/tr/td[12]")
             )
             .click();
+          page++;
         } catch (error) {
           //when the scrapping done. driver will close
           console.log("Stop");
@@ -55,6 +59,7 @@ async function start(my_q) {
 
           await driver.close();
           // require("child_process").fork("PythonSH/processing.py");
+          console.log("Starting Python Processing");
           pythonrun(error);
           break;
         }

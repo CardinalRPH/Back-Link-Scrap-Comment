@@ -1,3 +1,4 @@
+console.log("Starting Python Processing");
 const { spawn } = require('child_process');
 
 const python = spawn('python', ['PythonSH/processing.py']);
