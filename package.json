@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "link-cm": "node processingfrpython.js",
+    "link-sc": "node scrap_only.js"
   },
   "author": "Rayhan Febriyan",
   "license": "ISC",
   "dependencies": {
     "chromedriver": "^110.0.0",
     "prompt-sync": "^4.2.0",
-    "python-shell": "^3.0.1",
     "selenium-webdriver": "^4.8.0"
   }
 }

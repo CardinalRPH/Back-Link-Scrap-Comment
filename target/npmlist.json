@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"code-by-me","dependencies":{"chromedriver":{"version":"110.0.0"},"prompt-sync":{"version":"4.2.0"},"python-shell":{"version":"3.0.1"},"selenium-webdriver":{"version":"4.8.0"}}}

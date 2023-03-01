@@ -1,5 +1,6 @@
 import undetected_chromedriver.v2 as uc
 import re
+import sys
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -10,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 username = '' #your email google
 password = '' #your password google
 
-primary_comment = 'Good, Thanks for Your Information'
+primary_comment = 'Good, Thanks for Your Information' #your comment
 
 your_comment = '<a href ="https://www.budiluhur.ac.id/"dofollow>'+primary_comment+'</a>'
 
@@ -26,7 +27,9 @@ def comment():
             # delay=10
             x = x+1
             print(x)
+            sys.stdout.flush()
             print(line)
+            sys.stdout.flush()
             bol = False
             with open(r'Result/error_web.txt', 'r') as fp:
                 lines = fp.readlines()
@@ -40,6 +43,7 @@ def comment():
                         driver.get(line)
                         # myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'h1')))
                         print("page is load")
+                        sys.stdout.flush()
                         try:
                             sleep(1)
                             currURL = driver.current_url
@@ -49,18 +53,21 @@ def comment():
                                 buttonftr.click()
                             except NoSuchElementException:
                                 print("No FTR btn")
+                                sys.stdout.flush()
                             try:
                                 buttonftr2 = driver.find_element(
                                     By.XPATH, '//*[@id="FeaturedPost1"]/div/div/article/div[4]/div[1]/div[1]/span/a/span')
                                 buttonftr2.click()
                             except NoSuchElementException:
                                 print("No FTR btn")
+                                sys.stdout.flush()
                             try:
                                 buttonftr3 = driver.find_element(
                                     By.XPATH, '//*[@id="Blog1"]/div[1]/div/div/div[1]/div/div[3]/div[1]/span[3]/a')
                                 buttonftr3.click()
                             except NoSuchElementException:
                                 print("No FTR btn")
+                                sys.stdout.flush()
 
                             frame = driver.find_element(
                                 By.XPATH, '//*[@id="comment-editor"]')
@@ -78,20 +85,24 @@ def comment():
 
                             if upURL == currURL:
                                 print("=============>No Publish")
+                                sys.stdout.flush()
                                 with open("Result/on_acc_log.txt", "a") as f:
                                     f.write(line)
                             else:
                                 with open("Result/scs_log.txt", "a") as f:
                                     f.write(line)
                                 print("=============>Publish")
+                                sys.stdout.flush()
 
                             sleep(2)
 
                         except NoSuchElementException:
                             print("No El")
+                            sys.stdout.flush()
                             continue
                     except TimeoutException:
                         print("Timeout Exception: Page did not load.")
+                        sys.stdout.flush()
                         with open("Result/error_web.txt", "a") as f:
                             resultc = re.search("(?P<url>https?://[^/]+)/", line)
                             if resultc:
@@ -100,6 +111,7 @@ def comment():
                         continue
                     finally:
                         print("Timeout Exception: Page did not loadxx.")
+                        sys.stdout.flush()
                         continue
             
 
@@ -118,9 +130,11 @@ def login():
         By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input').send_keys(password)
     driver.find_element(
         By.XPATH, '//*[@id="passwordNext"]/div/button/span').click()
-    sleep(5)
+    sleep(10)
     print("login scss")
+    sys.stdout.flush()
     comment()
 
-
+print("hello " + username)
+sys.stdout.flush()
 login()
