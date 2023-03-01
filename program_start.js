@@ -24,7 +24,7 @@ async function start(my_q) {
     setTimeout(async function () {
       while (true) {
         try {
-          console.log("jalan");
+          console.log("Next Page");
           let linkElements = await driver.findElements(
             By.xpath("//div[@class='yuRUbf']//a[@href]")
           );
@@ -50,7 +50,7 @@ async function start(my_q) {
             .click();
         } catch (error) {
           //when the scrapping done. driver will close
-          console.log("Udeh Stop");
+          console.log("Stop");
 
 
           await driver.close();
