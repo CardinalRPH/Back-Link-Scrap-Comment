@@ -1,1 +1,1 @@
-require('child_process').fork('link_scrap.js'); // no need for 'new'
+require('child_process').fork('program_start.js'); // no need for 'new'
