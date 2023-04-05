@@ -1,0 +1,9 @@
+#ignoring Modules
+node_modules/
+node_modules
+
+#ignoring mail and password
+PyhtonSH/processing.py
+
+# ignoring the result
+Result/*
