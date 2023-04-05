@@ -6,6 +6,12 @@
 
 # How To Use
 
+## Install the module first
+
+``` 
+npm i 
+```
+
 Place your google email and password in "PythonSH\processing.py"
 <br>
 the code is (in line 11-12)
@@ -23,12 +29,16 @@ Make sure the file in
 <br>
 or if you want throw away a lot of keywords with command:
 
-``npm run link-cm`` 
+```
+npm run link-cm
+```
 
 first 
 than you do "put a comment" with command :
 
-``npm run link-sc``
+```
+npm run link-sc
+```
 
 <br>
 
@@ -36,15 +46,23 @@ than you do "put a comment" with command :
 
 Run this command in terminal
 
-```npm start```
+```
+npm start
+```
 <br>
 Start program (Scraping and Give Comment)
 <br> <br>
-```npm run link-cm```
+
+```
+npm run link-cm
+```
 <br>
 Start program (Give Comment Only)
 <br><br>
-```npm run link-sc```
+
+```
+npm run link-sc
+```
 <br>
 Start program (Scraping Only)
 
